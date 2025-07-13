@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenya Super App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mpesa-blue': '#0A5F96',
+                        'kenya-green': '#009A44',
+                        'earth-brown': '#8B4513',
+                        'sacco-orange': '#FF6B00',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .active-tab {
+            border-bottom: 3px solid #009A44;
+            color: #009A44;
+            font-weight: 600;
+        }
+        
+        .item-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bottom-nav-item.active {
+            color: #009A44;
+        }
+        
+        @media (max-width: 640px) {
+            .bottom-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 50;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- App Container -->
+    <div class="max-w-md mx-auto bg-white min-h-screen relative pb-16">
+        <!-- Header Section -->
+        <header class="bg-mpesa-blue text-white p-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-xl font-bold">Hello, Brian! <span class="text-yellow-300">👋</span></h1>
+                    <div class="flex items-center mt-1">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span class="text-sm">You're in Nairobi CBD</span>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-user text-gray-600"></i>
+                    </div>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                </div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="mt-4 relative">
+                <input type="text" placeholder="Search for items, rides..." 
+                    class="w-full py-2 px-4 pr-10 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-kenya-green">
+                <button class="absolute right-3 top-2 text-gray-500">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="p-4">
+            <!-- Quick Access Tiles -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-gradient-to-r from-kenya-green to-green-600 rounded-lg p-4 text-white shadow-md">
+                    <div class="flex items-center">
+                        <div class="bg-white bg-opacity-20 p-2 rounded-full mr-3">
+                            <i class="fas fa-store text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Marketplace</h3>
+                            <p class="text-xs opacity-90">Buy & sell locally</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-sacco-orange to-orange-500 rounded-lg p-4 text-white shadow-md">
+                    <div class="flex items-center">
+                        <div class="bg-white bg-opacity-20 p-2 rounded-full mr-3">
+                            <i class="fas fa-bus text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Take a Ride</h3>
+                            <p class="text-xs opacity-90">Book public transport</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg p-4 text-white shadow-md">
+                    <div class="flex items-center">
+                        <div class="bg-white bg-opacity-20 p-2 rounded-full mr-3">
+                            <i class="fas fa-newspaper text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Community Feed</h3>
+                            <p class="text-xs opacity-90">Local updates & events</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-lg p-4 text-white shadow-md">
+                    <div class="flex items-center">
+                        <div class="bg-white bg-opacity-20 p-2 rounded-full mr-3">
+                            <i class="fas fa-tags text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Offers & Deals</h3>
+                            <p class="text-xs opacity-90">M-Pesa promos, SACCO discounts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trending Section -->
+            <div class="mb-6">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="font-bold text-lg flex items-center">
+                        <i class="fas fa-fire text-red-500 mr-2"></i> Trending Now
+                    </h2>
+                    <a href="#" class="text-sm text-mpesa-blue">See all</a>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm item-card transition duration-200">
+                        <div class="h-32 bg-gray-200 relative">
+                            <img src="https://images.unsplash.com/photo-1603302576837-37561b2e3402?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG1hcmtldHBsYWNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" 
+                                alt="Item" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-1">
+                                <i class="far fa-heart text-gray-600"></i>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <h3 class="font-medium text-sm truncate">Samsung Galaxy S21</h3>
+                            <div class="flex justify-between items-center mt-1">
+                                <span class="font-bold text-kenya-green">KSh 25,000</span>
+                                <span class="text-xs text-gray-500">Nairobi</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm item-card transition duration-200">
+                        <div class="h-32 bg-gray-200 relative">
+                            <img src="https://images.unsplash.com/photo-1592921870789-045959971b0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1hdGF0dXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" 
+                                alt="Item" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-1">
+                                <i class="far fa-heart text-gray-600"></i>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <h3 class="font-medium text-sm truncate">Fresh Matatu Seats</h3>
+                            <div class="flex justify-between items-center mt-1">
+                                <span class="font-bold text-kenya-green">KSh 150</span>
+                                <span class="text-xs text-gray-500">Kibera</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Marketplace Section -->
+            <div class="mb-6">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="font-bold text-lg flex items-center">
+                        <i class="fas fa-store text-kenya-green mr-2"></i> Marketplace
+                    </h2>
+                    <a href="#" class="text-sm text-mpesa-blue">See all</a>
+                </div>
+                
+                <!-- Marketplace Tabs -->
+                <div class="flex overflow-x-auto pb-2 mb-3 hide-scrollbar">
+                    <button class="px-4 py-2 font-medium text-sm whitespace-nowrap active-tab">All</button>
+                    <button class="px-4 py-2 font-medium text-sm whitespace-nowrap">Electronics</button>
+                    <button class="px-4 py-2 font-medium text-sm whitespace-nowrap">Food</button>
+                    <button class="px-4 py-2 font-medium text-sm whitespace-nowrap">Services</button>
+                    <button class="px-4 py-2 font-medium text-sm whitespace-nowrap">Fashion</button>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm item-card transition duration-200">
+                        <div class="h-32 bg-gray-200 relative">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" 
+                                alt="Item" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-1">
+                                <i class="far fa-heart text-gray-600"></i>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <h3 class="font-medium text-sm truncate">Men's Watch</h3>
+                            <div class="flex justify-between items-center mt-1">
+                                <span class="font-bold text-kenya-green">KSh 1,500</span>
+                                <span class="text-xs text-gray-500">Westlands</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm item-card transition duration-200">
+                        <div class="h-32 bg-gray-200 relative">
+                            <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c2hpcnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" 
+                                alt="Item" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 bg-white bg-opacity-80 rounded-full p-1">
+                                <i class="far fa-heart text-gray-600"></i>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <h3 class="font-medium text-sm truncate">Designer T-Shirt</h3>
+                            <div class="flex justify-between items-center mt-1">
+                                <span class="font-bold text-kenya-green">KSh 800</span>
+                                <span class="text-xs text-gray-500">Eastleigh</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Take a Ride Section -->
+            <div>
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="font-bold text-lg flex items-center">
+                        <i class="fas fa-bus text-sacco-orange mr-2"></i> Take a Ride
+                    </h2>
+                    <a href="#" class="text-sm text-mpesa-blue">See all</a>
+                </div>
+                
+                <!-- Ride Booking Form -->
+                <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                    <h3 class="font-medium mb-3">Plan your trip</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center border rounded-lg px-3 py-2">
+                            <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                            <select class="flex-1 focus:outline-none text-sm">
+                                <option>From: Current Location</option>
+                                <option>Nairobi CBD</option>
+                                <option>Westlands</option>
+                                <option>Kibera</option>
+                                <option>Eastleigh</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex items-center border rounded-lg px-3 py-2">
+                            <i class="fas fa-flag-checkered text-green-500 mr-2"></i>
+                            <select class="flex-1 focus:outline-none text-sm">
+                                <option>To: Select Destination</option>
+                                <option>Thika</option>
+                                <option>Ruiru</option>
+                                <option>Kikuyu</option>
+                                <option>Ngong</option>
+                            </select>
+                        </div>
+                        
+                        <button class="w-full bg-sacco-orange text-white py-2 rounded-lg font-medium">
+                            Find Matatus
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Nearby SACCOs -->
+                <div class="bg-white rounded-lg shadow-sm p-4">
+                    <h3 class="font-medium mb-3">Nearby SACCOs</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center p-2 border rounded-lg">
+                            <div class="bg-gray-100 p-2 rounded-lg mr-3">
+                                <i class="fas fa-bus text-sacco-orange"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-medium">Super Metro</h4>
+                                <p class="text-xs text-gray-500">CBD → Thika</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-kenya-green">KSh 100</p>
+                                <p class="text-xs text-gray-500">Leaves in 12 mins</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-2 border rounded-lg">
+                            <div class="bg-gray-100 p-2 rounded-lg mr-3">
+                                <i class="fas fa-bus text-sacco-orange"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-medium">Forward SACCO</h4>
+                                <p class="text-xs text-gray-500">CBD → Kikuyu</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-kenya-green">KSh 80</p>
+                                <p class="text-xs text-gray-500">Leaves in 5 mins</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav bg-white border-t border-gray-200 py-2 px-4 flex justify-around">
+            <a href="#" class="bottom-nav-item active flex flex-col items-center text-xs">
+                <i class="fas fa-home text-lg mb-1"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="bottom-nav-item flex flex-col items-center text-xs">
+                <i class="fas fa-store text-lg mb-1"></i>
+                <span>Marketplace</span>
+            </a>
+            <a href="#" class="bottom-nav-item flex flex-col items-center text-xs">
+                <i class="fas fa-bus text-lg mb-1"></i>
+                <span>Ride</span>
+            </a>
+            <a href="#" class="bottom-nav-item flex flex-col items-center text-xs relative">
+                <i class="fas fa-comment text-lg mb-1"></i>
+                <span>Messages</span>
+                <span class="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+            </a>
+            <a href="#" class="bottom-nav-item flex flex-col items-center text-xs">
+                <i class="fas fa-user text-lg mb-1"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+    
+    <script>
+        // Simple tab switching functionality
+        document.querySelectorAll('.flex.overflow-x-auto button').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.flex.overflow-x-auto button').forEach(btn => {
+                    btn.classList.remove('active-tab');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active-tab');
+            });
+        });
+        
+        // Bottom navigation active state
+        document.querySelectorAll('.bottom-nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all items
+                document.querySelectorAll('.bottom-nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
